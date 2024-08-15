@@ -26,8 +26,9 @@ jobs:
           FUNCTION_NAME="recommendation-engine-lambda-function-staging"
         fi
 
-        zip -r9 lambda_function.zip src/*
+        cd src
+        zip -r9 ../lambda_function.zip .
 
         aws lambda update-function-code \
           --function-name $FUNCTION_NAME \
-          --zip-file fileb://lambda_function.zip
+          --zip-file fileb://../lambda_function.zip
